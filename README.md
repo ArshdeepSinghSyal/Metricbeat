@@ -36,3 +36,34 @@ Pre-requisite: The localhost should have pip, boto and ansible installed.
     ```sudo metricbeat modules enable apache```
 
 10) Disable metricbeat from monitoring the system
+
+    ```sudo metricbeat modules disable system```
+
+11) Start httpd service on the virtual machine instance.
+
+    ```sudo systemctl start httpd.service```
+    ```systemctl status httpd.service```    (to check status of httpd service)
+    
+12) Configure the output of metricbeat.
+    
+    - Go to /etc/metricbeat/metricbeat.yml
+    
+    - In Elastic Search Output, comment out the existing output and add the following output.
+    
+    - Store the output in a file by adding the following code:
+    
+    ```output.file:```
+    ```path: "/tmp/metricbeat"```
+    ```filename: metricbeat```
+
+13) Restart httpd and metricbeat.
+
+    ```sudo systemctl start httpd.service```
+    ```sudo systemctl start httpd.service```
+    ```sudo systemctl stop metricbeat.service```
+    ```sudo systemctl stop metricbeat.service```
+
+
+14) View the monitoring output from inside /tmp/metricbeat.
+    
+    ```tail -f metricbeat.log```
