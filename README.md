@@ -28,8 +28,10 @@ Pre-requisite: The localhost should have pip, boto and ansible installed.
     
 8) Install Metricbeat on the linux machine.
 
-    ```curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.0.1-x86_64.rpm
-    sudo rpm -vi metricbeat-7.0.1-x86_64.rpm```
+    ```
+    curl -L -O https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.0.1-x86_64.rpm
+    sudo rpm -vi metricbeat-7.0.1-x86_64.rpm
+    ```
     
 9) Enable metricbeat to monitor httpd service.
 
@@ -44,7 +46,7 @@ Pre-requisite: The localhost should have pip, boto and ansible installed.
     ```
     sudo systemctl start httpd.service
     systemctl status httpd.service
-    ```    (to check status of httpd service)
+    ```
     
 12) Configure the output of metricbeat.
     
