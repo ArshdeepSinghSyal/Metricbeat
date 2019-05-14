@@ -50,7 +50,12 @@ Pre-requisite: The localhost should have pip, boto and ansible installed.
     
 12) Configure the output of metricbeat.
     
-    - Go to /etc/metricbeat/metricbeat.yml
+    - Go to /etc/metricbeat/metricbeat.yml & comment out:
+    
+    ```
+    output.elasticsearch:
+    hosts: ["localhost:9200"]
+    ```
     
     - In Elastic Search Output, comment out the existing output and add the following output.
     
@@ -65,10 +70,10 @@ Pre-requisite: The localhost should have pip, boto and ansible installed.
 13) Restart httpd and metricbeat.
 
     ```
-    sudo systemctl start httpd.service
-    sudo systemctl start httpd.service
+    sudo systemctl stop httpd.service
     sudo systemctl stop metricbeat.service
-    sudo systemctl stop metricbeat.service
+    sudo systemctl start httpd.service
+    sudo systemctl start metricbeat.service
     ```
 
 
